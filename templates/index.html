@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body { 
+            background-image: url('/static/bank.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: left; 
+            color: rgb(18, 17, 17); 
+        }
+    </style>
+</head>
+<body>
+      
+    <center>
+    <h1>Loan Approval Prediction</h1>
+    <form action="/predict" method="post">
+        <div style="margin-top: 10px;">
+            <table>
+                <tr>
+                    <td><label>Loan Id:</label></td>
+                    <td><input type="number" name="loan_id" required></td>
+                </tr>
+                <tr>
+                    <td><label>Number of Dependents:</label></td>
+                    <td><input type="number" name="no_of_dependents" required></td>
+                </tr>
+                <tr>
+                    <td><label>Education (0 for Not Graduate, 1 for Graduate):</label></td>
+                    <td><input type="number" name="education" required></td>
+                </tr>
+                <tr>
+                    <td><label>Self Employed (0 for No, 1 for Yes):</label></td>
+                    <td><input type="number" name="self_employed" required></td>
+                </tr>
+                <tr>
+                    <td><label>Annual Income:</label></td>
+                    <td><input type="number" name="income_annum" required></td>
+                </tr>
+                <tr>
+                    <td><label>Loan Amount:</label></td>
+                    <td><input type="number" name="loan_amount" required></td>
+                </tr>
+                <tr>
+                    <td><label>Loan Term:</label></td>
+                    <td><input type="number" name="loan_term" required></td>
+                </tr>
+                <tr>
+                    <td><label>Cibil Score:</label></td>
+                    <td><input type="number" name="cibil_score" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: left;">
+                        <input type="submit" value="Predict">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+    {% if prediction is not none %}
+        <h2 style="forced-color-adjust: red;">Prediction: {{ prediction }}</h2>
+    {% endif %}
+    </center>
+</body>
+</html>
